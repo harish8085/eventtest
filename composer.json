@@ -13,7 +13,9 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "prettus/l5-repository": "^2.7",
+        "proengsoft/laravel-jsvalidation": "^4.7"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

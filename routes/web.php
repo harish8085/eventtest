@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get(
+    '/',
+    [EventController::class, 'index']
+);
+Route::get(
+    '/events',
+    [EventController::class, 'index']
+);
+
+Route::get(
+    '/event/create',
+    [EventController::class, 'create']
+)->name('event/create');
+
+Route::post(
+    '/event/store-event',
+    [EventController::class, 'store']
+)->name('event/store');
+
+Route::get(
+    '/event/load-list',
+    [EventController::class, 'getEvents']
+)->name('event/list');
+
+Route::get(
+    '/event/delete-event',
+    [EventController::class, 'deleteEvent']
+)->name('event/delete');
