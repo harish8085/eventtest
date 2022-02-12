@@ -59,34 +59,44 @@ class EventController extends BaseController
             return $ex->getMessage();
         }
     }
-    
+
     /**
      * Method getEvents
      *
      * @return void
      */
-    public function getEvents() 
+    public function getEvents()
     {
-         $events = $this->eventRepository->getEvents();
+        $events = $this->eventRepository->getEvents();
         $view = View::make(
             'event._list',
             [
-                'data' => $events,               
+                'data' => $events,
             ]
         )->render();
-        return response()->json(['success' => true, 'data'=> $view]);
+        return response()->json(['success' => true, 'data' => $view]);
     }
-    
+
     /**
      * Method deleteEvent
      *
      * @return void
      */
-    public function deleteEvent(Request $request) 
+    public function deleteEvent(Request $request)
     {
         try {
             $this->eventRepository->deleteEvent($request->all());
-            return response()->json(['success' => true, 'data'=> [],'message'=>'Event deleted successfully']);
+            return response()->json(['success' => true, 'data' => [], 'message' => 'Event deleted successfully']);
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
+    }
+
+    public function editEvent($id)
+    {
+        try {
+            $event = $this->eventRepository->getEvent($id);
+            return view('event.edit', ['data' => $event]);
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }

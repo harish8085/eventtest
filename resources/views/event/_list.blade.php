@@ -10,6 +10,7 @@
     @endif
     <td>
  
+    <a href="{{route('event/edit', ['id' => $event->id])}} " class="btn btn-primary">Edit</a>
     <a href="javacript:void(0);" onclick="deleteEvent('{{$event->id}}')" class="btn btn-primary">Delete</a>
     </td>
 </tr>

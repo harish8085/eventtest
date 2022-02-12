@@ -117,4 +117,16 @@ class EventRepository extends BaseRepository
         $recuurence->delete();
         return true;
     }
+    
+    /**
+     * Method getEvent
+     *
+     * @param $id $id 
+     *
+     * @return void
+     */
+    public function getEvent($id) 
+    {
+        return $this->where(['id' => $id])->first();
+    }
 }

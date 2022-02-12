@@ -34,17 +34,18 @@
 
 <body class="antialiased">
     <form name="eventFrm" id="eventFrm" action="{{route('event/store')}}" method="POST">
+        <input type="hidden" name="event_id" value="{{$data->id}}">
         @csrf()
         <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
-            <input type="email" class="form-control" name="title" id="exampleInputEmail1" placeholder="Enter Title">
+            <input type="email" class="form-control" name="title" id="exampleInputEmail1" placeholder="Enter Title" value="{{$data->title}}">
 
         </div>
 
         <div class="form-group">
             <label for="exampleInputEmail1">Start date</label>
             <div class='input-group date' id='datetimepicker6'>
-                <input type='text' class="form-control" name="start_date" />
+                <input type='text' class="form-control" name="start_date" value="{{$data->start_date}}"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -54,7 +55,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">End date</label>
                 <div class='input-group date' id='datetimepicker7'>
-                    <input type='text' name="end_date" class="form-control" />
+                    <input type='text' name="end_date" class="form-control" value="{{$data->end_date}}" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -62,11 +63,11 @@
             </div>
 
             <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio1" name="recurrence_on" value="1" class="custom-control-input">
+                <input type="radio" id="customRadio1" name="recurrence_on" value="1" class="custom-control-input" checked="{{($data->recurrence_id == 1)? 'checked':false}}">
                 <label class="custom-control-label" for="customRadio1">Rucrrence on</label>
             </div>
             <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio2" name="recurrence_on" value="2" class="custom-control-input">
+                <input type="radio" id="customRadio2" name="recurrence_on" value="2" class="custom-control-input" checked="{{($data->recurrence_id == 2)? 'checked':false}}">
                 <label class="custom-control-label" for="customRadio2">Rucurrence on the</label>
             </div>
 
@@ -134,7 +135,6 @@
 
 <script type="text/javascript">
     $(function() {
-
         $('#datetimepicker6').datetimepicker({
             format: 'd-mm-YYYY'
         });

@@ -42,3 +42,7 @@ Route::get(
     '/event/delete-event',
     [EventController::class, 'deleteEvent']
 )->name('event/delete');
+Route::get(
+    '/event/edit/{id}',
+    [EventController::class, 'editEvent']
+)->name('event/edit');
